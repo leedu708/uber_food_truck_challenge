@@ -3,7 +3,7 @@ module FoodFacilityHelper
   APP_TOKEN = "1KXOeqR6IrJZlerVAW1YU2Ra0"
   API_URL = "rqzj-sfat"
 
-  def input(fooditems = ["pizza"], coord = [get_lat, get_long] )
+  def input(food = "pizza", coord = [get_lat, get_long] )
 
     client = SODA::Client.new( { :domain => "data.sfgov.org", 
                                  :app_token => APP_TOKEN } )
@@ -13,6 +13,7 @@ module FoodFacilityHelper
     initial_long = coord[1] - 0.01
     end_long = coord[1] + 0.01
 
+    fooditems = food.split(", ")
     food_query = get_food_query(fooditems)
 
     params = { "$where" => "Latitude > '#{initial_lat}' AND Latitude < '#{end_lat}' AND Longitude > '#{initial_long}' AND Longitude < '#{end_long}'", 
