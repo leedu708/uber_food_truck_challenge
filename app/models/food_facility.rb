@@ -25,11 +25,11 @@ class FoodFacility
   end
 
   def self.all
-    @@client.get(ENDPOINT)
+    @@client.get(ENDPOINT, { "$limit" => 10 })
   end
 
   def self.q(str)
-    @@client.get(ENDPOINT, '$q' => str)
+    @@client.get(ENDPOINT, { "$q" => str, "$limit" => 10} )
   end
 
   def self.q_user_input(food = "pizza", coord = [37.79, -122.39])

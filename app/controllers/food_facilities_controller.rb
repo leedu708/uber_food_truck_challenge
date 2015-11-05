@@ -4,7 +4,7 @@ class FoodFacilitiesController < ApplicationController
 
     @food_facilities = FoodFacility.all
 
-    if params[:food].empty?
+    if params[:food] = ""
       @food_facilities = FoodFacility.all
     else
       @food_facilities = FoodFacility.q_user_input(params[:food])
