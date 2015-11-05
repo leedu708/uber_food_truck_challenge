@@ -18,13 +18,15 @@
       Food Trucks:
     </h2>
 
-    <ul class="list-group">
-      <% @food_facilities.each do |food_facility| %>
-        <pre>
-          <%= "#{food_facility["applicant"]} on #{food_facility["address"]}" %>
-        </pre>
-      <% end %>
-    </ul>
+    <div id="results-box">
+      <ul class="list-group">
+        <% @food_facilities.each do |food_facility| %>
+          <pre>
+            <%= "#{food_facility["applicant"]} on #{food_facility["address"]}" %>
+          </pre>
+        <% end %>
+      </ul>
+    </div>
 
   </div>
 

@@ -25,7 +25,7 @@ class FoodFacility
   end
 
   def self.all
-    @@client.get(ENDPOINT, { "$limit" => 10 })
+    @@client.get(ENDPOINT, { "$limit" => 30 })
   end
 
   def self.q(str)
