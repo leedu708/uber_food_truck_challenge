@@ -2,7 +2,7 @@ class FoodFacilitiesController < ApplicationController
 
   def index
 
-    if params[:food] == ""
+    if params[:food] == "" || params[:food].nil?
       @food_facilities = FoodFacility.all
     else
       @food_facilities = FoodFacility.q_user_input(params[:food])
