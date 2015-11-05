@@ -1,16 +1,18 @@
 <div class='row'>
   <div class='col-xs-6'>
     <div class='form-group'>
-      <%= form_tag('/input') do %>
-      
-        <%= label_tag :address, 'Address' %>
-        <%= text_field_tag('address'), class: 'form-control' %>
+      <%= form_for @food_facility do |f| %>
+        <%= f.label :address do %>
+          Address:
+        <% end %>
+        <%= f.text_field :address, class: 'form-control' %>
 
-        <%= label_tag :food, 'Enter types of food' %>
-        <%= text_field_tag('food'), class: 'form-control' %>
+        <%= f.label :food do %>
+          Input Foods:
+        <% end %>
+        <%= f.text_field :food, class: 'form-control' %>
 
-        <%= submit_tag %>
-
+        <%= f.submit %>
       <% end %>
     </div>
   </div>
