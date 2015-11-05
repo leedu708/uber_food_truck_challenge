@@ -1,13 +1,13 @@
 
 <div id="app" class="row well">
-  <div class="col-md-6">
+  <div class="col-xs-3 col-xs-offset-1">
 
     <%= form_tag(
         '/food_facilities',
         :id => 'map-form'
       ) do %>
       <div class="form-group">
-        <%= text_field_tag('food', nil, :class => 'form-control', :placeholder => 'Food...') %>
+        <%= text_field_tag(:food, nil, :class => 'form-control', :placeholder => 'Food...') %>
       </div>
       <button type="submit" class="btn btn-primary">Find Food Trucks, I'm Hungry!</button>
     <% end %>
@@ -28,7 +28,7 @@
 
   </div>
 
-  <div id="map-wrap" class="col-md-6">
+  <div id="map-wrap" class="col-xs-7">
       <div id="map"></div>
   </div>
 </div>
