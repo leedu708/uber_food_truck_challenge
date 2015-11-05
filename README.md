@@ -9,6 +9,6 @@ Create a service that tells the user what types of food trucks might be found ne
 - JavaScript/jQuery
 - Google Maps API
 
-###Backend
-Ruby on Rails
+###Back-end
+- Ruby on Rails
 
