@@ -2,7 +2,15 @@ class FoodFacilityController < ApplicationController
 
   def index
 
-    @food_facility = FoodFacility.new
+    @search = FoodFacility.new
+
+  end
+
+  private
+
+  def white_listed_params
+
+    params.require(:food_facility).permit(:food)
 
   end
 
