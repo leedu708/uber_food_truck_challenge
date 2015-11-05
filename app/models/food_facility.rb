@@ -46,11 +46,11 @@ class FoodFacility
                "$q"     => food_query,
                "$limit" => 10 }
 
-    response = @@client.get(ENDPOINT, params).select { |key, value| key.to_s.match('location') }
+    response = @@client.get(ENDPOINT, params)
 
   end
 
-  def get_food_query(fooditems)
+  def self.get_food_query(fooditems)
 
     query = ""
 

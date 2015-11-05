@@ -1,0 +1,2 @@
+module FoodFacilitiesHelper
+end

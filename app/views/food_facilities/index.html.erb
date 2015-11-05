@@ -1,0 +1,32 @@
+<div class='row'>
+  <div class='col-xs-4'>
+    <div class='form-group'>
+      <%= form_tag('/food_facilities') do %>
+
+        <%= label_tag :food do %>
+          Input Foods:
+        <% end %>
+        <%= text_field_tag :food, nil, class: 'form-control' %>
+
+        <br>
+        <%= submit_tag "Submit", class: 'btn btn-primary' %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+<% if @food_facilities %>
+  <ul>
+    <% @food_facilities.each do |food_facility| %>
+    <li>
+      <pre>
+        <%= "#{food_facility["applicant"]} on #{food_facility["address"]}" %>
+      </pre>
+    </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No results</p>
+<% end %>
+
