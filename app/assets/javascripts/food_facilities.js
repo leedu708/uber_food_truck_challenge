@@ -6,7 +6,7 @@ var ResultList = function(foodFacilities) {
   this.foodFacilities = foodFacilities;
 
   this.toString = function() {
-    var str = '<ul class="list-group">';
+    var str = '<ul class="list-group" id="result-list">';
     for (var i = 0; i < this.foodFacilities.length; i++) {
       str += new ResultListItem(this.foodFacilities[i]).toString();
     }
