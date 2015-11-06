@@ -1,36 +1,59 @@
+<div id="app" class="row">
+  <div class="col-md-4">
 
-<div id="app" class="row well">
-  <div class="col-xs-3 col-xs-offset-1">
+    <div class="well">
 
-    <%= form_tag(
-        '/food_facilities',
-        :id => 'map-form'
-      ) do %>
-      <div class="form-group">
-        <%= text_field_tag(:food, nil, :class => 'form-control', :placeholder => 'Food...') %>
+      <%= form_tag(
+          '/food_facilities',
+          :id => 'map-form'
+        ) do %>
+        <div class="form-group">
+          <%= text_field_tag('food', nil, :class => 'form-control', :placeholder => 'Food...') %>
+        </div>
+        <button type="submit" class="btn btn-primary">Find Food Trucks, I'm Hungry!</button>
+      <% end %>
+
+      <br>
+
+      <div id="results">
+        <h2>
+          Food Trucks:
+        </h2>
+        <p id="no-results">No results yet</p>
       </div>
-      <button type="submit" class="btn btn-primary">Find Food Trucks, I'm Hungry!</button>
-    <% end %>
-
-    <br>
-
-    <h2>
-      Food Trucks:
-    </h2>
-
-    <div id="results-box">
-      <ul class="list-group">
-        <% @food_facilities.each do |food_facility| %>
-          <pre>
-            <%= "#{food_facility["applicant"]} on #{food_facility["address"]}" %>
-          </pre>
-        <% end %>
-      </ul>
     </div>
 
   </div>
 
-  <div id="map-wrap" class="col-xs-7">
+  <div id="map-wrap" class="col-md-8">
       <div id="map"></div>
   </div>
 </div>
+
+<script>
+  $('#map-form').submit(function(e) {
+    e.preventDefault();
+    $.ajax({
+      url: '/food_facilities',
+      type: 'POST',
+      data: {
+        utf8: $('#map-form input[name="utf8"]').val(),
+        authenticity_token: $('#map-form input[name="authenticity_token"]').val(),
+        food: $('#food').val()
+      },
+      dataType: 'json',
+      error: function(jqXHR, textStatus, errorThrown) {
+        console.log(jqXHR, textStatus, errorThrown);
+      },
+      complete: function(jqXHR, textStatus) {
+        // console.log(jqXHR, textStatus);
+      },
+      success: function(data, textStatus, jqXHR) {
+        initMap(data);
+        $('#no-results').remove();
+        $('#results').append($(new ResultList(data).toString()));
+        // console.log(data, textStatus, jqXHR);
+      }
+    });
+  });
+</script>
