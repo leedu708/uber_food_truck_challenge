@@ -42,7 +42,7 @@ class FoodFacility
 
     params = { "$where" => "latitude > '#{initial_lat}' AND latitude < '#{end_lat}' AND longitude > '#{initial_long}' AND longitude < '#{end_long}'", 
                "$q"     => food_query,
-               "$limit" => 10 }
+               "$limit" => 30 }
 
     response = @@client.get(ENDPOINT, params)
 

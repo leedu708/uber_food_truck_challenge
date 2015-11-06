@@ -4,7 +4,7 @@ class FoodFacilitiesController < ApplicationController
 
     if params[:q] == "" || params[:q].nil?
       @food_facilities = FoodFacility.all
-      flash[:notice] = "Empty food query - displaying all food trucks"
+      flash[:notice] = "Empty food query - displaying first 30 food trucks"
     else
       @food_facilities = FoodFacility.q(params[:q])
       flash[:notice] = "Showing food trucks associated with: #{params[:q]}"

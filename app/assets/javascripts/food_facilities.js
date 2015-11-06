@@ -6,9 +6,9 @@ var ResultList = function(foodFacilities) {
   this.foodFacilities = foodFacilities;
 
   this.toString = function() {
-    var str = '<ul class="list-group" id="result-list">';
+    var str = '<ul id="result-list" class="list-group">';
     for (var i = 0; i < this.foodFacilities.length; i++) {
-      str += new ResultListItem(this.foodFacilities[i]).toString();
+      str += new ResultListItem(this.foodFacilities[i], i).toString();
     }
     str += '</ul>';
     return str;
@@ -19,7 +19,7 @@ var ResultList = function(foodFacilities) {
 // ResultListItem
 //--------------------------------------------
 
-var ResultListItem = function(foodFacility) {
+var ResultListItem = function(foodFacility, index) {
   foodFacility['applicant'] = foodFacility['applicant'] || '-';
   foodFacility['locationdescription'] = foodFacility['locationdescription'] || '-';
   foodFacility['address'] = foodFacility['address'] || '-';
@@ -30,7 +30,7 @@ var ResultListItem = function(foodFacility) {
   this.toString = function() {
     var str = '<li class="list-group-item">' +
       '<div class="result-wrap">' +
-        '<h3>' + this.foodFacility['applicant'] + '</h3>' +
+        '<h3><a id="applicant-' + index + '" href="#">' + this.foodFacility['applicant'] + '</a></h3>' +
         '<p>Location: ' + this.foodFacility['locationdescription'] + '</p>' +
         '<p>Address: ' + this.foodFacility['address'] + '</p>' +
         '<p>Hours: ' + this.foodFacility['dayshours'] + '</p>' +
@@ -110,6 +110,21 @@ function initMap(data, position) {
           });
 
           infowindow.open(map, this);
+      });
+
+      //collection listeners
+      $('#applicant-' + i).click(function(e){
+        e.preventDefault();
+
+        var index = parseInt(this.id.split('-')[1]);
+
+        var infowindow = new google.maps.InfoWindow({
+          content: new MapWindow(data[index]).toString()
+        });
+
+        infowindow.open(map, markers[index]);
+
+        return false;
       });
 
       markers.push(marker);
