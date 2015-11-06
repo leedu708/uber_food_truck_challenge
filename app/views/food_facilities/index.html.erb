@@ -49,9 +49,9 @@
         // console.log(jqXHR, textStatus);
       },
       success: function(data, textStatus, jqXHR) {
-        initMap(data);
         $('#result-list').remove();
         $('#results').append($(new ResultList(data).toString()));
+        initMap(data);
         // console.log(data, textStatus, jqXHR);
       }
     });
