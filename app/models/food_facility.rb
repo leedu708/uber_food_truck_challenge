@@ -3,8 +3,6 @@ class FoodFacility
   include ActiveModel::Conversion
   extend ActiveModel::Naming
 
-  attr_accessor :address, :food
-
   APP_TOKEN = ENV["APP_TOKEN"]
   DOMAIN = 'data.sfgov.org'
   ENDPOINT = 'rqzj-sfat'
