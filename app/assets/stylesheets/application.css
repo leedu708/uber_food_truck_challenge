@@ -13,3 +13,7 @@
  *= require_tree .
  *= require_self
  */
+
+#main-footer {
+  margin-top: 32px;
+}

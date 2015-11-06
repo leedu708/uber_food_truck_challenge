@@ -13,16 +13,55 @@
   <body>
     <header class="page-header text-center">
       <h1>
-        Uber Food Truck Challenge
+        <a href="https://www.uber.com">
+          Uber
+        </a>
+        Food Truck Challenge
         <small>
           San Franciso
         </small>
       </h1>
     </header>
 
-    <div id='flash_hook'></div>
-
     <%= yield %>
+
+    <footer id="main-footer">
+      <div class="text-center">
+        <p>
+          Challenge brought to you by
+          <a href="http://vikingcodeschool.com">Viking Code School</a>.
+        </p>
+        <p>
+          Made possible by
+          <a href="https://data.sfgov.org/developers">
+            SF Open Data
+          </a>
+          and
+          <a href="https://developers.google.com/maps">
+            Google Maps
+          </a>
+          .
+        </p>
+        <p>
+          Developed by
+          <a href="https://github.com/leedu708">
+            leedu708
+          </a>
+          and
+          <a href="http://bideowego.com">
+            Bideo Wego
+          </a>
+          .
+        </p>
+        <p>
+          Source code available on
+          <a href="https://github.com/leedu708/uber_food_truck_challenge">
+            <i class="fa fa-github fa-2x"></i>
+            Github
+          </a>
+        </p>
+      </div>
+    </footer>
 
     <!-- Google Maps API -->
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBwEHsag4V1VFy2t5waBA_u6h2HvoU_1pI&callback=initMap"></script>
