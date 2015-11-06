@@ -5,7 +5,7 @@ class FoodFacility
 
   attr_accessor :address, :food
 
-  APP_TOKEN = 'vWrocSZtse6CvhrrWS1W88ULf'
+  APP_TOKEN = ENV["APP_TOKEN"]
   DOMAIN = 'data.sfgov.org'
   ENDPOINT = 'rqzj-sfat'
 
